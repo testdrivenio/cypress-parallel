@@ -39,11 +39,15 @@ jobs:
       - run: ls -la cypress/integration
       - run:
           name: Running cypress tests 1
-          command: $(npm bin)/cypress run --spec cypress/integration/sample1.spec.js
+          command: >-
+            $(npm bin)/cypress run --spec cypress/integration/sample1.spec.js
+            --reporter mochawesome --reporter-options "reportFilename=test1"
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
           path: cypress/screenshots
+      - store_artifacts:
+          path: mochawesome-report
   test2:
     working_directory: ~/tmp
     docker:
@@ -57,11 +61,15 @@ jobs:
       - run: ls -la cypress/integration
       - run:
           name: Running cypress tests 2
-          command: $(npm bin)/cypress run --spec cypress/integration/sample2.spec.js
+          command: >-
+            $(npm bin)/cypress run --spec cypress/integration/sample2.spec.js
+            --reporter mochawesome --reporter-options "reportFilename=test2"
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
           path: cypress/screenshots
+      - store_artifacts:
+          path: mochawesome-report
   test3:
     working_directory: ~/tmp
     docker:
@@ -75,11 +83,15 @@ jobs:
       - run: ls -la cypress/integration
       - run:
           name: Running cypress tests 3
-          command: $(npm bin)/cypress run --spec cypress/integration/sample3.spec.js
+          command: >-
+            $(npm bin)/cypress run --spec cypress/integration/sample3.spec.js
+            --reporter mochawesome --reporter-options "reportFilename=test3"
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
           path: cypress/screenshots
+      - store_artifacts:
+          path: mochawesome-report
   test4:
     working_directory: ~/tmp
     docker:
@@ -93,11 +105,15 @@ jobs:
       - run: ls -la cypress/integration
       - run:
           name: Running cypress tests 4
-          command: $(npm bin)/cypress run --spec cypress/integration/sample4.spec.js
+          command: >-
+            $(npm bin)/cypress run --spec cypress/integration/sample4.spec.js
+            --reporter mochawesome --reporter-options "reportFilename=test4"
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
           path: cypress/screenshots
+      - store_artifacts:
+          path: mochawesome-report
 workflows:
   version: 2
   build_and_test:
