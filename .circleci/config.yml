@@ -56,8 +56,9 @@ jobs:
       - run:
           name: Running cypress tests 1
           command: >-
-            $(npm bin)/cypress run --spec cypress/integration/sample1.spec.js
-            --reporter mochawesome --reporter-options "reportFilename=test1"
+            if $(npm bin)/cypress run --spec cypress/integration/sample1.spec.js
+            --reporter mochawesome --reporter-options "reportFilename=test1";
+            then echo 'pass'; else echo 'fail'; fi
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
@@ -83,8 +84,9 @@ jobs:
       - run:
           name: Running cypress tests 2
           command: >-
-            $(npm bin)/cypress run --spec cypress/integration/sample2.spec.js
-            --reporter mochawesome --reporter-options "reportFilename=test2"
+            if $(npm bin)/cypress run --spec cypress/integration/sample2.spec.js
+            --reporter mochawesome --reporter-options "reportFilename=test2";
+            then echo 'pass'; else echo 'fail'; fi
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
@@ -110,8 +112,9 @@ jobs:
       - run:
           name: Running cypress tests 3
           command: >-
-            $(npm bin)/cypress run --spec cypress/integration/sample3.spec.js
-            --reporter mochawesome --reporter-options "reportFilename=test3"
+            if $(npm bin)/cypress run --spec cypress/integration/sample3.spec.js
+            --reporter mochawesome --reporter-options "reportFilename=test3";
+            then echo 'pass'; else echo 'fail'; fi
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
@@ -137,8 +140,9 @@ jobs:
       - run:
           name: Running cypress tests 4
           command: >-
-            $(npm bin)/cypress run --spec cypress/integration/sample4.spec.js
-            --reporter mochawesome --reporter-options "reportFilename=test4"
+            if $(npm bin)/cypress run --spec cypress/integration/sample4.spec.js
+            --reporter mochawesome --reporter-options "reportFilename=test4";
+            then echo 'pass'; else echo 'fail'; fi
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
