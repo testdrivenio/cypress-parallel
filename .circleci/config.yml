@@ -1,5 +1,4 @@
 version: 2
-
 jobs:
   build:
     working_directory: ~/tmp
@@ -99,7 +98,6 @@ jobs:
           path: cypress/videos
       - store_artifacts:
           path: cypress/screenshots
-
 workflows:
   version: 2
   build_and_test:
