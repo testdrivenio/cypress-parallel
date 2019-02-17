@@ -50,6 +50,41 @@
           }
         }
       ]
+    },
+    "combine_reports": {
+      "working_directory": "~/tmp",
+      "docker": [
+        {
+          "image": "cypress/base:10",
+          "environment": {
+            "TERM": "xterm"
+          }
+        }
+      ],
+      "steps": [
+        "checkout",
+        {
+          "attach_workspace": {
+            "at": "~/"
+          }
+        },
+        {
+          "attach_workspace": {
+            "at": "/tmp/mochawesome-report"
+          }
+        },
+        {
+          "run": "ls /tmp/mochawesome-report"
+        },
+        {
+          "run": "node ./lib/combine.js"
+        },
+        {
+          "store_artifacts": {
+            "path": "mochareports"
+          }
+        }
+      ]
     }
   },
   "workflows": {
